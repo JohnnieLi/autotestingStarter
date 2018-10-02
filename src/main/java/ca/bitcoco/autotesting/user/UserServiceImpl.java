@@ -1,12 +1,13 @@
 package ca.bitcoco.autotesting.user;
 
+import ca.bitcoco.autotesting.core.CoreRepositoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserServiceImpl extends CoreRepositoryServiceImpl<UsersRepository, User, String> implements UserService {
+public class UserServiceImpl extends CoreRepositoryServiceImpl<UsersRepository, User, Long> implements UserService {
 
     private PasswordEncoder passwordEncoder;
 
@@ -41,6 +42,7 @@ public class UserServiceImpl extends CoreRepositoryServiceImpl<UsersRepository, 
     public User findByGoogle(String username) {
         return this.repository.findByUsernameGoogle(username);
     }
+
 
     @Override
     public User findByFacebook(String username) {

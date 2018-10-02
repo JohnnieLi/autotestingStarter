@@ -1,24 +1,38 @@
 package ca.bitcoco.autotesting.user;
 
 import org.springframework.data.annotation.Id;
+import javax.persistence.*;
 
-
+@Entity
+@Table(name = "users")
 public class User {
+
     @Id
-    private String _id;
+    @GeneratedValue(generator = "user_generator")
+    @SequenceGenerator(
+            name = "user_generator",
+            sequenceName = "user_sequence",
+            initialValue = 1000
+    )
+    private Long id;
 
-
+    @Column(columnDefinition = "password")
     private String password;
+
+    @Column(columnDefinition = "username")
     private String username;
+
+    @Column(columnDefinition = "role")
     private String role;
 
 
-    public String get_id() {
-        return _id;
+    public User(){
+        super();
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getRole() {
@@ -29,8 +43,6 @@ public class User {
         this.role = role;
     }
 
-    private String firstName;
-    private String lastName;
 
     public String getUsername() {
         return username;
@@ -48,25 +60,10 @@ public class User {
         this.password = password;
     }
 
-    public String get_Id() {
-        return _id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Long getId() {
+        return id;
     }
 
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
 }

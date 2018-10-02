@@ -44,7 +44,7 @@ public class UserController {
     public ResponseEntity<CoreResponseBody> delete(Authentication auth) {
         try{
             User applicationUser  = (User)auth.getPrincipal();
-            this.userService.deleteById(applicationUser.get_Id());
+            this.userService.deleteById(applicationUser.getId());
             CoreResponseBody responseBody = new CoreResponseBody<>(true, null, "delete 1 user", null);
             return new ResponseEntity<>(responseBody,HttpStatus.OK);
         }catch (Exception err){
