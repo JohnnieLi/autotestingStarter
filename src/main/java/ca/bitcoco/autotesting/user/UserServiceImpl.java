@@ -24,7 +24,7 @@ public class UserServiceImpl extends CoreRepositoryServiceImpl<UsersRepository, 
         String pass = "testpass";
         String encodedPass = this.passwordEncoder.encode(pass);
         user.setPassword(encodedPass);
-        return this.repository.save(user);
+        return this.create(user);
     }
 
 
